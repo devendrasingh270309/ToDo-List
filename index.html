@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Tasks — Liquid Glass To-Do</title>
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<script>try{var t=localStorage.getItem('todo-theme')||(matchMedia('(prefers-color-scheme:dark)').matches?'dark':'light');document.documentElement.dataset.theme=t}catch(e){}</script>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="app">
+<nav class="nav glass" aria-label="Main">
+<div class="brand"><b></b>Tasks</div>
+<button class="nb" data-view="all"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg><span>All</span><b class="n" id="n-all"></b></button>
+<button class="nb" data-view="active"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="8"/></svg><span>Active</span><b class="n" id="n-active"></b></button>
+<button class="fab" id="add" aria-label="New task"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M12 5v14M5 12h14"/></svg><span>New task</span></button>
+<button class="nb" data-view="today"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="4" y="5" width="16" height="15" rx="3"/><path d="M4 10h16M9 3v4M15 3v4"/></svg><span>Today</span><b class="n" id="n-today"></b></button>
+<button class="nb" data-view="done"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8"/><path d="m8.5 12 2.5 2.5 4.5-5"/></svg><span>Done</span><b class="n" id="n-done"></b></button>
+</nav>
+<main class="main">
+<header class="top glass">
+<div><h1 id="hi">Hello</h1><p class="sub" id="sub"></p></div>
+<div class="hr"><time class="clk" id="clk" aria-label="Current time"></time><button class="tsw" id="theme" role="switch" aria-checked="false" aria-label="Dark mode"><span class="tl" id="tl">Light</span><span class="trk"><span class="knob" id="knob"></span></span></button></div>
+</header>
+<section class="stats" aria-label="Statistics">
+<div class="glass ring"><div class="rg" id="rg"><span id="pct">0%</span></div><div><div class="big" id="s-done">0 / 0</div><div class="lbl">tasks completed</div></div></div>
+<div class="glass"><div class="big" id="s-today">0</div><div class="lbl">due today</div></div>
+<div class="glass"><div class="big bad" id="s-od">0</div><div class="lbl">overdue</div></div>
+<div class="glass week"><div class="lbl" style="margin:0">Completed · last 7 days <b id="s-wk"></b></div><div class="bars" id="bars"></div></div>
+</section>
+<section class="glass tools" aria-label="Search and filters">
+<label class="s"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg><span class="sr">Search</span><input id="q" type="search" placeholder="Search tasks  ( / )" autocomplete="off"></label>
+<label><span class="sr">Category</span><select id="fc"></select></label>
+<label><span class="sr">Sort</span><select id="so"><option value="due">Sort: Due date</option><option value="pri">Sort: Priority</option><option value="new">Sort: Newest</option><option value="az">Sort: A–Z</option></select></label>
+</section>
+<section class="list"><div class="grid" id="list" aria-live="polite"></div></section>
+</main>
+</div>
+<div class="scrim" id="modal" aria-hidden="true">
+<form class="glass sheet" id="form" role="dialog" aria-modal="true" aria-labelledby="mt">
+<h2 id="mt">New task</h2>
+<label class="f">Title<input id="f-t" required maxlength="120" placeholder="What needs doing?"></label>
+<label class="f">Notes<textarea id="f-n" rows="2" maxlength="400" placeholder="Optional details"></textarea></label>
+<div class="f">Priority<div class="seg" role="radiogroup"><label><input type="radio" name="pri" value="0">Low</label><label><input type="radio" name="pri" value="1" checked>Medium</label><label><input type="radio" name="pri" value="2">High</label></div></div>
+<div class="two"><label class="f">Category<select id="f-c"></select></label><label class="f">Due date &amp; time<input type="datetime-local" id="f-d"></label></div>
+<div class="row"><button type="button" class="btn" id="cancel">Cancel</button><button class="btn p" id="save">Add task</button></div>
+</form></div>
+<script src="script.js"></script>
+</body>
+</html>
