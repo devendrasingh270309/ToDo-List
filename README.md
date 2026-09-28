@@ -1,6 +1,6 @@
 # Tasks — Liquid Glass To-Do
 
-A standalone, dependency-free to-do app with an iPhone-style Liquid Glass UI.
+A standalone, dependency-free to-do app with an Liquid Glass UI.
 Plain HTML + CSS + JavaScript. No build step, no npm, no frameworks, no WebGL.
 
 ## Run
